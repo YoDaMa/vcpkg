@@ -2,25 +2,10 @@ include(vcpkg_common_functions)
 
 vcpkg_check_linkage(ONLY_STATIC_LIBRARY)
 
-if("public-preview" IN_LIST FEATURES)
-    vcpkg_from_github(
-        OUT_SOURCE_PATH SOURCE_PATH
-        REPO Azure/azure-c-shared-utility
-        REF bc83cba1230e98988ae5cd2328f4dcf8c49d5866
-        SHA512 48947709f9c07c8a910d40066a52b746f9ab15543837f44207b787674efd2b11e7a7eb849c88e20984f0e2141e5611f6d6edea39c8b82687f371c08ab274bd7b
-        HEAD_REF master
-        PATCHES no-double-expand-cmake.patch
-    )
-else()
-    vcpkg_from_github(
-        OUT_SOURCE_PATH SOURCE_PATH
-        REPO Azure/azure-c-shared-utility
-        REF bc83cba1230e98988ae5cd2328f4dcf8c49d5866
-        SHA512 48947709f9c07c8a910d40066a52b746f9ab15543837f44207b787674efd2b11e7a7eb849c88e20984f0e2141e5611f6d6edea39c8b82687f371c08ab274bd7b
-        HEAD_REF master
-        PATCHES no-double-expand-cmake.patch
-    )
-endif()
+# file(COPY ${SOURCE_PATH}/inc/azure_macro_utils/macro_utils.h DESTINATION ${CURRENT_PACKAGES_DIR}/share/azure-c-shared-utility)
+# file(COPY ${CURRENT_INSTALLED_DIR}/share/azure-macro-utils-c/macro_utils.h DESTINATION ${SOURCE_PATH}/deps/azure-c-shared-utility/configs/)
+
+set(SOURCE_PATH "E:/GitRepos/azure-c-shared-utility")
 
 vcpkg_configure_cmake(
     SOURCE_PATH ${SOURCE_PATH}
